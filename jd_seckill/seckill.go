@@ -75,7 +75,7 @@ func (this *Seckill) getSeckillUrl() (string, error) {
 	req.SetHeader("Referer", fmt.Sprintf("https://item.jd.com/%s.html", skuId))
 	url := ""
 	for {
-		_, body, _ := req.SetUrl("https://itemko.jd.com/itemShowBtn?callback=jQuery{}" + strconv.Itoa(common.Rand(1000000, 9999999)) + "&skuId=" + skuId + "&from=pc&_=" + strconv.Itoa(int(time.Now().Unix()*1000))).SetMethod("get").Send().End()
+		_, body, _ := req.SetUrl("https://itemko.jd.com/itemShowBtn?callback=jQuery" + strconv.Itoa(common.Rand(1000000, 9999999)) + "&skuId=" + skuId + "&from=pc&_=" + strconv.Itoa(int(time.Now().Unix()*1000))).SetMethod("get").Send().End()
 		var cbBody string
 		cbBody = body
 		spBody := strings.Split(body, "(")
