@@ -166,6 +166,10 @@ func (this *Seckill) SubmitSeckillOrder() bool {
 		log.Println(fmt.Sprintf("抢购失败，无法获取生成订单的基本信息，接口返回:【%s】", err.Error()))
 		return false
 	}
+	if !gjson.Get(initInfo, "addressList").IsArray() {
+		log.Println("抢购失败，地址信息为空")
+		return false
+	}
 	address := gjson.Get(initInfo, "addressList").Array()
 	defaultAddress := address[0]
 	isinvoiceInfo := gjson.Get(initInfo, "invoiceInfo").Exists()
