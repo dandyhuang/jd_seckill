@@ -77,6 +77,18 @@ func (this *Seckill) getSeckillUrl() (string, error) {
 	url := ""
 	for {
 		_, body, _ := req.Send().End()
+<<<<<<< HEAD
+=======
+		//临时打印数据
+		log.Println("返回信息:"+body)
+		//先注释,测试过gjson可以解析jQuery1153906({"type":"3","state":"13","url":""})格式
+/*		var cbBody string
+		cbBody = body
+		spBody := strings.Split(body, "(")
+		if len(spBody) >= 2 {
+			cbBody = strings.Trim(spBody[1], ")")
+		}
+>>>>>>> 220a693c9e8c6017bfe9cbc68c81f199d22b764c
 
 		if gjson.Get(body, "url").Exists() && gjson.Get(body, "url").String() != "" {
 			url = gjson.Get(body, "url").String()
